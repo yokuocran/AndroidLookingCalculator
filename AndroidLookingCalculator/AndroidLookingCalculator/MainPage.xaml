@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AndroidLookingCalculator.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:AndroidLookingCalculator.Controls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:local="clr-namespace:AndroidLookingCalculator;assembly=AndroidLookingCalculator"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:rainbows="clr-namespace:Xamarin.Forms.DebugRainbows;assembly=Xamarin.Forms.DebugRainbows"
+    rainbows:DebugRainbow.ShowColors="False"
+    BackgroundColor="Black"
+    mc:Ignorable="d">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="numKeysStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="60" />
+                <Setter Property="Padding" Value="20" />
+                <Setter Property="Margin" Value="0,0,0,5" />
+            </Style>
+            <Style x:Key="numOpsStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="LightBlue" />
+                <Setter Property="FontSize" Value="30" />
+                <Setter Property="Padding" Value="20,15" />
+                <Setter Property="Margin" Value="0,0,0,10" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout Spacing="0">
+        <StackLayout Padding="0,20" BackgroundColor="#242320">
+            <!--<Entry FontSize="50" Text="entry" />-->
+            <!--<controls:CustomEntry
+                x:Name="calculationLbl"
+                FontSize="50"
+                Text="Test" />-->
+            <Label
+                x:Name="calculationLbl"
+                FontSize="50"
+                TextColor="White" />
+            <Label
+                x:Name="displayLbl"
+                FontSize="40"
+                TextColor="White" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <FlexLayout
+                AlignContent="Start"
+                AlignItems="Start"
+                Direction="Row"
+                HorizontalOptions="FillAndExpand"
+                JustifyContent="SpaceBetween"
+                Wrap="Wrap">
+                <Label Style="{StaticResource numKeysStyle}" Text="7">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="numKey_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Style="{StaticResource numKeysStyle}" Text="8">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="numKey_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Style="{StaticResource numKeysStyle}" Text="9">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="numKey_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Style="{StaticResource numKeysStyle}" Text="4">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="numKey_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Style="{StaticResource numKeysStyle}" Text="5">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="numKey_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Style="{StaticResource numKeysStyle}" Text="6">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="numKey_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Style="{StaticResource numKeysStyle}" Text="1">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="numKey_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Style="{StaticResource numKeysStyle}" Text="2">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="numKey_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Style="{StaticResource numKeysStyle}" Text="3">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="numKey_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Style="{StaticResource numKeysStyle}" Text="0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="numKey_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Style="{StaticResource numKeysStyle}" Text=".">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="numKey_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Style="{StaticResource numKeysStyle}" Text="=">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="numKey_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </FlexLayout>
+            <BoxView WidthRequest="1" Color="#242320" />
+            <FlexLayout
+                AlignItems="Stretch"
+                Direction="Column"
+                JustifyContent="Start"
+                Wrap="Wrap">
+                <Label Style="{StaticResource numOpsStyle}" Text="Clear">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Op_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label
+                    FontFamily="{StaticResource FontAwesome}"
+                    Style="{StaticResource numOpsStyle}"
+                    Text="{x:Static fontawesome:FontAwesomeIcons.AngleLeft}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Op_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Style="{StaticResource numOpsStyle}" Text="/">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Op_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Style="{StaticResource numOpsStyle}" Text="x">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Op_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Style="{StaticResource numOpsStyle}" Text="-">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Op_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Style="{StaticResource numOpsStyle}" Text="+">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Op_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </FlexLayout>
+        </StackLayout>
+
+    </StackLayout>
+
+</ContentPage>
